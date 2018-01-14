@@ -93,4 +93,3 @@ var ValidAPI = (function(){
         postData: postData
     };
 })();
-
