@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html>
   <body>
+      <div>
+          <p id="incoming"></p>
+          <p>Transformed data</p>  
+          <ul>
+            <li id="transformations-id"></li>
+            <li id="transformations-result"></li>
+          </ul>     
+      </div>
     
     <div>
         <button type="button" onclick="ValidAPI.postData()">Verify</button>        
     </div>
-    
     <script type="text/javascript" src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", ValidAPI.formatData());
+    </script>
   </body>
 </html

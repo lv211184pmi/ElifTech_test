@@ -60,19 +60,22 @@ var ValidAPI = (function(){
         getData()
             .then(data => {
                 let reqKey = (JSON.parse(data).id);
-                let inputArrays = (JSON.parse(data).expressions);            
+                let inputArrays = (JSON.parse(data).expressions);
+                document.getElementById("incoming").innerHTML = `Incoming data: ${data}`;           
                 inputArrays.forEach((element) => {
                     resultArray.push(concatArr(buildArr(element)));
                 });
                 reqObject.id = reqKey;
+                document.getElementById("transformations-id").innerHTML = `Transformed data: ${reqObject.id}`;
                 reqObject.results = resultArray;
+                document.getElementById("transformations-result").innerHTML = `Transformed data: ${reqObject.results}`;
             });
-        console.log("Transformed data: ", reqObject);
         return reqObject;
     }
     
     let postData = () => {
         let obj = formatData();
+        console.log(obj);
         var http_request = new XMLHttpRequest();
         http_request.onreadystatechange = function () { 
             if (this.readyState == 4 && this.status == 200) {
@@ -86,6 +89,7 @@ var ValidAPI = (function(){
     }
 
     return {
+        formatData: formatData,
         postData: postData
     };
 })();
